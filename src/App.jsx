@@ -10,10 +10,10 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Account />} />
-
+                {/* <Route path="/" element={<Account />} /> */}
+                {/* once other pages are implemented uncomment and add "explore" to explore page link} /> */}
                 <Route
-                    path="/explore"
+                    path="/"
                     element={
                         <NavBar>
                             <Explore />

@@ -1,42 +1,72 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+    background-color: white;
+    text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar {
+    width: 100%;
+    top: 0;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 1.5rem;
+    border-bottom: 1px solid #ddd;
+    background-color: white;
+    font-size: 0.8rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+
+.navbar .nav-link img.nav-icon {
+    width: 20px;
+    height: 20px;
 }
 
-.card {
-  padding: 2em;
+.search-bar {
+    display: flex;
+    width: 1250px;
+    height: 38px;
+    padding: 0.25rem;
+    align-items: center;
+    font-size: 0.8rem;
+    background-color: #eee;
+    border-radius: 12px;
 }
 
-.read-the-docs {
-  color: #888;
+img.search-icon {
+    width: 20px;
+    height: 17px;
+    margin-left: 8px;
+    filter: invert(0.5);
+}
+
+img.home-icon {
+    width: 35px;
+    height: 35px;
+    margin-left: 8px;
+    filter: grayscale(100%); 
+}
+
+img.create-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.nav-search {
+    background-color: #eee;
+    flex: 1;
+    border: none;
+    font-size: 1rem;
+    padding-left: 6px;
+    font-weight: 500;
+    color: #555;
+}
+
+.nav-search::placeholder {
+    color: #555;
+}
+
+.nav-search:focus {
+    outline: none;
 }
