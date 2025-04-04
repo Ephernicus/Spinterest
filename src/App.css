@@ -3,6 +3,7 @@ body {
     text-align: center;
 }
 
+/* ----- NAVGATION BAR ----- */
 .navbar {
     width: 100%;
     top: 0;
@@ -11,12 +12,11 @@ body {
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    padding: 1.5rem;
+    padding: 1.2rem 1.5rem;
     border-bottom: 1px solid #ddd;
     background-color: white;
     font-size: 0.8rem;
 }
-
 
 .navbar .nav-link img.nav-icon {
     width: 20px;
@@ -44,13 +44,17 @@ img.search-icon {
 img.home-icon {
     width: 35px;
     height: 35px;
-    margin-left: 8px;
-    filter: grayscale(100%); 
+    filter: grayscale(100%);
 }
 
 img.create-icon {
     width: 24px;
     height: 24px;
+}
+
+img.logo-icon {
+    width: 22px;
+    height: 22px;
 }
 
 .nav-search {
@@ -69,4 +73,85 @@ img.create-icon {
 
 .nav-search:focus {
     outline: none;
+}
+
+
+/* ----- PIN CARDS ----- */
+.pin-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+}
+
+@media (max-width: 1200px) {
+    .pin-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .pin-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .pin-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 400px) {
+    .pin-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.pin-card {
+    display: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pin-card img {
+    width: 100%;
+    display: block;
+}
+
+.pin-card .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.pin-card:hover .overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.pin-card .overlay button {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background-color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pin-card:hover .overlay button {
+    opacity: 1;
+}
+
+.pin-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }

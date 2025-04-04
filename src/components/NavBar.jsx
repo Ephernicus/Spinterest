@@ -5,7 +5,7 @@ export default function NavBar({ children }) {
         <>
             <nav className="navbar">
                 <Link to="/explore" className="nav-link">
-                    <img src="/icons/icon.png" alt="Explore" className="nav-icon" />
+                    <img src="/icons/icon.png" alt="Explore" className="logo-icon" />
                 </Link>
 
                 <div className="search-bar">
