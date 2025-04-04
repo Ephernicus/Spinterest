@@ -1,16 +1,38 @@
-require('dotenv').config(); 
+import dotenv from 'dotenv';
+dotenv.config();
 
-const express = require('express');
+import express from 'express';
 const app = express();
 
 const accessKey = process.env.UNSPLASH_ACCESS_KEY;
 const secretKey = process.env.UNSPLASH_SECRET_KEY;
+
 const port = process.env.PORT || 3001;
 
-app.get('/', (req, res) => {
-  res.send(`Your Access Key is ${accessKey}`);
+app.get('/api/photos', async (req, res) => {
+    try {
+        const page = req.query.page || 1;
+        const query = req.query.query || '';
+
+        let unsplashUrl;
+        if (query) {
+            unsplashUrl = `https://api.unsplash.com/search/photos?client_id=${accessKey}&page=${page}&query=${query}`;
+        } else {
+            unsplashUrl = `https://api.unsplash.com/photos?client_id=${accessKey}&page=${page}`;
+        }
+
+        const response = await fetch(unsplashUrl);
+        const data = await response.json();
+
+        const results = query ? data.results : data;
+        return res.json(results);
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'Server error fetching photos' });
+    }
 });
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+    console.log(`Server running on port ${port}`);
 });
