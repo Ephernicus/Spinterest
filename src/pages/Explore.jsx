@@ -5,12 +5,21 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import "../App.css";
 
 function Explore() {
+    // image array
     const [pins, setPins] = useState([]);
+    // page number array 
     const [page, setPage] = useState(1);
+    // search term in search bar
+    const [searchTerm, setSearchTerm] = useState("");
 
     // loads images for the current page then appends them to the existing images
     const loadImages = () => {
-        fetch(`http://localhost:3001/api/photos?page=${page}`)
+        // fetches images from backend server based on whether a search term is present
+        const url = searchTerm
+            ? `http://localhost:3001/api/photos?page=${page}&query=${searchTerm}`
+            : `http://localhost:3001/api/photos?page=${page}`;
+
+        fetch(url)
             .then((response) => response.json())
             .then((data) => {
                 // appends new images to exisiting array, and filter out duplicates
@@ -31,6 +40,14 @@ function Explore() {
         loadImages();
     }, []);
 
+    // handles search 
+    const handleSearch = (event) => {
+        event.preventDefault();
+        setPins([]); // clear existing pins
+        setPage(1); // reset page number
+        loadImages(); // load new images based on search term
+    }
+
     // TODO : handles saving a pin, only console log for now
     const handleSave = (pin) => {
         console.log("Saved pin:", pin);
@@ -38,7 +55,11 @@ function Explore() {
 
     return (
         <div>
-            <NavBar />
+            <NavBar 
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                onSearch={handleSearch}
+            />
             <InfiniteScroll
                 dataLength={pins.length} // current total of images
                 next={loadImages} // method to load next batch of images
