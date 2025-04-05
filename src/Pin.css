@@ -2,58 +2,110 @@
 /* ----- PIN CARD STYLES ----- */
 
 .pin-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
+    column-count: 5;
+    column-gap: 1rem;
     padding: 1rem;
 }
 
 @media (max-width: 1200px) {
     .pin-container {
-        grid-template-columns: repeat(4, 1fr);
+        column-count: 4;
     }
 }
 
 @media (max-width: 900px) {
     .pin-container {
-        grid-template-columns: repeat(3, 1fr);
+        column-count: 3;
     }
 }
 
 @media (max-width: 600px) {
     .pin-container {
-        grid-template-columns: repeat(2, 1fr);
+        column-count: 2;
     }
 }
 
 @media (max-width: 400px) {
     .pin-container {
-        grid-template-columns: 1fr;
+        column-count: 1;
     }
 }
 
+/* pin card grid space styling */
 .pin-card {
-    display: relative;
+    display: inline-block;
+    width: 100%;
     border-radius: 12px;
+    margin-bottom: 0.5rem;
     cursor: pointer;
     overflow: hidden;
+    position: relative;
 }
 
+/* image inside the pin card */
 .pin-card img {
     width: 100%;
     border-radius: 12px;
     display: block;
 }
 
-.pin-card .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
+/* darken image on hover */
+.pin-card:hover img {
+    filter: brightness(0.7);
+}
+
+/* ----- pin card buttons ------ */
+#save-button {
+    position: absolute;   
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: #eb000e;
+    color: #ffffff;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    height: 3rem;
+    font-weight: bold;
+}
+
+#save-button:hover {
+    background-color: #c5000f;
+}
+
+#download-button {
+    position: absolute;   
+    bottom: 0.5rem;
+    right: 0.5rem;
+    background-color: white;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    height: 2.3rem;
+    width: 0rem;
+    display: flex;    
+    align-items: center;      
+    justify-content: center; 
+}
+
+#download-button:hover {
+    background-color: #f0f0f0;
+}
+
+#download-button img {
+    width: 1rem;
+    height: 1rem;
+    padding: 0.6rem;
+}
+
+/* hide pin buttons by default */
+.pin-card #save-button,
+.pin-card #download-button {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* show pin buttons when hovering over pin */
+.pin-card:hover #save-button,
+.pin-card:hover #download-button {
+    opacity: 1;
 }

@@ -20,8 +20,19 @@ function Explore() {
             : `http://localhost:3001/api/photos?page=${page}`;
 
         fetch(url)
-            .then((response) => response.json())
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`Network error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then((data) => {
+                // check if the API returned an error
+                if (data.error) {
+                    console.error("API Error:", data.error);
+                    return;
+                }
+
                 // appends new images to exisiting array, and filter out duplicates
                 setPins((prevPins) => {
                     const newPins = data.filter((pin) => !prevPins.some((p) => p.id === pin.id));
@@ -32,6 +43,8 @@ function Explore() {
             })
             .catch((error) => {
                 console.error("Error fetching photos:", error);
+                // stop loading more images on error
+                setHasMore(false);
             });
     };
 
@@ -55,7 +68,7 @@ function Explore() {
 
     return (
         <div>
-            <NavBar 
+            <NavBar
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
                 onSearch={handleSearch}
