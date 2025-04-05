@@ -24,9 +24,9 @@ app.get('/api/photos', async (req, res) => {
 
         let unsplashUrl;
         if (query) {
-            unsplashUrl = `https://api.unsplash.com/search/photos?client_id=${accessKey}&page=${page}&query=${query}`;
+            unsplashUrl = `https://api.unsplash.com/search/photos?client_id=${accessKey}&page=${page}&query=${query}&`;
         } else {
-            unsplashUrl = `https://api.unsplash.com/photos?client_id=${accessKey}&page=${page}`;
+            unsplashUrl = `https://api.unsplash.com/photos?client_id=${accessKey}&page=${page}&`;
         }
 
         const response = await fetch(unsplashUrl);

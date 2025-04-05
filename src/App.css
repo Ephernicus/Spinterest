@@ -13,7 +13,6 @@ body {
     justify-content: space-between;
     box-sizing: border-box;
     padding: 1.2rem 1.5rem;
-    border-bottom: 1px solid #ddd;
     background-color: white;
     font-size: 0.8rem;
 }
