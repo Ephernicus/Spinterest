@@ -11,7 +11,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 {/* <Route path="/" element={<Account />} /> */}
-                {/* once other pages are implemented uncomment and add "explore" to explore page link} /> */}
+                {/* TODO : once other pages are implemented uncomment and add "explore" to explore page link} /> */}
                 <Route
                     path="/"
                     element={

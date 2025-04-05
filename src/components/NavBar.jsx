@@ -4,7 +4,8 @@ export default function NavBar({ children }) {
     return (
         <>
             <nav className="navbar">
-                <Link to="/explore" className="nav-link">
+                {/* TODO : change back to /explore once account page is set up */}
+                <Link to="/" className="nav-link">
                     <img src="/icons/icon.png" alt="Explore" className="logo-icon" />
                 </Link>
 

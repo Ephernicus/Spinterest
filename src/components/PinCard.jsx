@@ -1,15 +1,20 @@
-export default function PinGallery({ pins }) {
+import React from 'react';
+import '../Pin.css';
+
+function pinCard({ image, save }) {
     return (
-        <div className="pin-gallery">
-            {pins.map((pin, index) => (
-                <div className="pin-container" key={index}>
-                    <img src={pin.imageUrl} alt={pin.title} />
-                    <div className="overlay">
-                        <button>Save</button>
-                    </div>
-                    <PinCard key={pin.id} pin={pin} />
-                </div>
-            ))}
+        <div className="pin-card">
+            <img src={image}
+                className="pin-image"
+            />
+            <button
+                className="save-pin"
+                onClick={() => save(image)}
+            >
+                Save
+            </button>
         </div>
     );
 }
+
+export default pinCard;

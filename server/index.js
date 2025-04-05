@@ -1,8 +1,16 @@
+
+// Backend Express server that fetches photos from the Unsplash API
+
+// allows cross origin requests for frontend vs backend servers
+import cors from 'cors';
+
+// allows access to API keys in .env
 import dotenv from 'dotenv';
 dotenv.config();
 
 import express from 'express';
 const app = express();
+app.use(cors());
 
 const accessKey = process.env.UNSPLASH_ACCESS_KEY;
 const secretKey = process.env.UNSPLASH_SECRET_KEY;
